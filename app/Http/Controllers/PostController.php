@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Category;
 use App\Models\Post;
 
 class PostController extends Controller
@@ -16,7 +17,9 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('post.create');
+        $categories = Category::all();
+
+        return view('post.create', compact('categories'));
     }
 
     public function store()
@@ -24,7 +27,8 @@ class PostController extends Controller
         $data = request()->validate([
             'title' => 'string',
             'content' => 'string',
-            'image' => 'string'
+            'image' => 'string',
+            'category_id' => ''
         ]);
 
         Post::create($data);
@@ -39,7 +43,9 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        return view('post.edit', compact('post'));
+        $categories = Category::all();
+
+        return view('post.edit', compact('post', 'categories'));
     }
 
     public function update(Post $post)
@@ -47,7 +53,8 @@ class PostController extends Controller
         $data = request()->validate([
             'title' => 'string',
             'content' => 'string',
-            'image' => 'string'
+            'image' => 'string',
+            'category_id' => ''
         ]);
 
         $post->update($data);
