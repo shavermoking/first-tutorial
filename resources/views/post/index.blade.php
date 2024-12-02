@@ -8,4 +8,8 @@
             <div><a href="{{ route('post.show', $post->id) }}">{{ $post->id }} . {{ $post->title }}</a></div>
              <br>
         @endforeach
+
+    <div class="mt-3">
+        {{ $posts->links() }}
+    </div>
 @endsection
