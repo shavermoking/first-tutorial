@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,3 +38,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 Route::get('/main', 'MainController@index')->name('main.index');
 Route::get('/contacts', 'ContactController@index')->name('contact.index');
 Route::get('/about', 'AboutController@index')->name('about.index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
