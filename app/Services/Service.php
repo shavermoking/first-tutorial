@@ -14,7 +14,7 @@ class Service extends Controller
 
         $post = Post::create($data);
         $post->tags()->attach($tags);
-
+        return $post;
     }
 
     public function update($data, Post $post)
@@ -24,5 +24,6 @@ class Service extends Controller
 
         $post->update($data);
         $post->tags()->sync($tags);
+        return $post->fresh();
     }
 }
