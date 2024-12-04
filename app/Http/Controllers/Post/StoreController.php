@@ -13,7 +13,6 @@ class StoreController extends BaseController
     public function __invoke(StoreRequest $request)
     {
         $data = $request->validated();
-
         $post = $this->service->store($data);
 
         return new PostResource($post);
