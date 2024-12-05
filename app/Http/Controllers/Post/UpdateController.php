@@ -15,6 +15,6 @@ class UpdateController extends BaseController
 
         $post = $this->service->update($data, $post);
 
-        return new PostResource($post);
+        return $post instanceof Post ? new PostResource($post) : $post;
     }
 }
