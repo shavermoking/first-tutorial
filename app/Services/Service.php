@@ -23,7 +23,7 @@ class Service extends Controller
             $tagIds = $this->getTagIds($tags);
             $data['category_id'] = $this->getCategoryId($category);
 
-            $post = Post::create($data);
+            $post = Post::query()->create($data);
             $post->tags()->attach($tagIds);
 
             DB::commit();
@@ -63,26 +63,26 @@ class Service extends Controller
     {
         $tagIds = [];
         foreach ($tags as $tag){
-            $tag = !isset($tag['id']) ? Tag::create($tag) : Tag::find($tag['id']);
+            $tag = !isset($tag['id']) ? Tag::query()->create($tag) : Tag::query()->find($tag['id']);
             $tagIds[] = $tag->id;
         }
 
         return $tagIds;
     }
 
-    private function getCategoryId($item)
+    private function getCategoryId($item): int
     {
-        $category = !isset($item['id']) ? Category::create($item) : Category::find($item['id']);
+        $category = !isset($item['id']) ? Category::query()->create($item) : Category::query()->find($item['id']);
 
         return $category->id;
     }
 
-    private function getCategoryIdWithUpdate($item)
+    private function getCategoryIdWithUpdate($item): int
     {
         if (!isset($item['id'])) {
-            $category = Category::create($item);
+            $category = Category::query()->create($item);
         } else {
-            $category = Category::find($item['id']);
+            $category = Category::query()->find($item['id']);
             $category->update($item);
             $category = $category->fresh();
         }

@@ -13,7 +13,7 @@ class ImportExcelCommand extends Command
 {
     protected $signature = 'import:excel';
 
-    protected $description = 'Command description';
+    protected $description = 'Import posts from Excel file';
 
 
     /**

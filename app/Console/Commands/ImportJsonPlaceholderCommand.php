@@ -11,7 +11,7 @@ class ImportJsonPlaceholderCommand extends Command
 {
     protected $signature = 'import:jsonplaceholder';
 
-    protected $description = 'Command description';
+    protected $description = 'Request fake api';
 
 
     /**

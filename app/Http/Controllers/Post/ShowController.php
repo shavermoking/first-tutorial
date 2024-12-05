@@ -8,7 +8,7 @@ use App\Models\Post;
 
 class ShowController extends BaseController
 {
-    public function __invoke(Post $post)
+    public function __invoke(Post $post): PostResource
     {
         return new PostResource($post);
     }
