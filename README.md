@@ -15,3 +15,4 @@
 
 - JWT
 - Guzzle
+- Laravel Excel
