@@ -10,3 +10,5 @@
 CHANGELOG.md export-ignore
 
 public/plugins/* linguist-language=plaintext
+
+*.js linguist-detectable=false
